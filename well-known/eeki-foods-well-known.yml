@@ -1,0 +1,41 @@
+generated: '2026-07-20'
+method: probed
+source: live HTTP probes of https://www.eekifoods.com
+host: https://www.eekifoods.com
+result: none-found
+notes: >-
+  No /.well-known/ discovery surface is published. The host serves a pre-launch
+  "Launching Soon" placeholder page, so every discovery path returns 404. Recorded
+  so a later enrichment round can detect a change rather than re-probe blind.
+documents:
+- path: /.well-known/security.txt
+  status: 404
+- path: /.well-known/openid-configuration
+  status: 404
+- path: /.well-known/oauth-authorization-server
+  status: 404
+- path: /.well-known/api-catalog
+  status: 404
+- path: /.well-known/ai-plugin.json
+  status: 404
+- path: /llms.txt
+  status: 404
+subdomains_probed:
+- host: api.eekifoods.com
+  status: no-dns
+- host: docs.eekifoods.com
+  status: no-dns
+- host: developer.eekifoods.com
+  status: no-dns
+registries_probed:
+- registry: npm
+  query: eeki
+  first_party_matches: 0
+  notes: only unrelated "@eeki-ticketing/*" packages
+- registry: pypi
+  query: eeki
+  status: 404
+- registry: github
+  query: eeki foods
+  first_party_matches: 0
+  notes: no org "eekifoods", no matching repositories
